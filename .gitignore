@@ -1,0 +1,8 @@
+#Pastas geradas automaticamente
+/buildNetwork
+/front-end
+/rest-api
+
+#arquivos auxiliares
+destroyFolders.sh
+

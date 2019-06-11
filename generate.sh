@@ -13,7 +13,8 @@ AUTHENTICATION="none" #none-> Sem autenticação, token -> Autenticacao simples 
 FABRIC_VERSION="1.4.0"
 NETWORK_SERVICE="local" #local ou IBP (IBM Blockchain Plataform)
 
-while getopts "t:v:a:anv" opt; do
+#lendo parametros de entrada
+while getopts "t:v:a:" opt; do
     case "$opt" in
     t)
         PRJ_TYPE="$OPTARG"
@@ -35,7 +36,14 @@ cd geradores
 
 ./back-end.sh
 
+if [ "${PRJ_TYPE}" == "blockchain" ]; then
+    #Por enquanto apenas local
+    echo "Chamando construtor blockchain"
+    ./blockchain.sh -v $FABRIC_VERSION -l 
+fi
 
+echo "#CRIANDO PROJETO FRONT-END"
+./front-end.sh
 
 
 
